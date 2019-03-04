@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 
@@ -26,10 +26,10 @@ namespace UnityDarkSkin
         static void Init()
         {
             Console.Title = "Unity Dark Skin v1.1";
-            Console.WriteLine("Choose version:");
+            Console.WriteLine("OS버전을 선택해주세요 :");
             Console.WriteLine("* Unity.exe (32 bit): type '1'");
             Console.WriteLine("* Unity.exe (64 bit): type '2'");
-            Console.Write("Your answer: ");
+            Console.Write("답변 : ");
 
             ConsoleKeyInfo key = Console.ReadKey();
             switch (key.KeyChar)
@@ -48,10 +48,10 @@ namespace UnityDarkSkin
 
             if (SystemType == Arch.x64)
             {
-                Console.WriteLine("Choose your Unity version:");
+                Console.WriteLine("유니티 버전을 선택해주세요 :");
                 Console.WriteLine("* 5.0 to 2018.2: type '1'");
                 Console.WriteLine("* 2018.3 to 2019.1: type '2'");
-                Console.Write("Your answer: ");
+                Console.Write("답변 : ");
 
                 key = Console.ReadKey();
                 switch (key.KeyChar)
@@ -102,15 +102,15 @@ namespace UnityDarkSkin
         {
             string Directory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             FilePath = Directory + @"\" + FileName;
-            Console.WriteLine("\nSearch path: " + FilePath);
+            Console.WriteLine("\n경로 찾는중: " + FilePath);
 
             if (File.Exists(FilePath))
             {
                 Console.WriteLine("--------");
-                Console.WriteLine("Attention: make backup of your Unity.exe file!");
-                Console.WriteLine("Press Enter to change skin...");
+                Console.WriteLine("알림 : Unity.exe 파일을 백업을 꼭 해주세요!");
+                Console.WriteLine("백업 후 Enter를 눌러주세요.");
                 Console.ReadKey();
-                Console.WriteLine("Please wait...");
+                Console.WriteLine("기다려주세요...");
 
                 BytePosition = GetBytePosition();
 
@@ -119,16 +119,16 @@ namespace UnityDarkSkin
                     if (BytePosition != 0)
                     {
                         Console.WriteLine("--------");
-                        Console.WriteLine("Please wait...");
+                        Console.WriteLine("기다려주세요...");
 
                         GetSkinType(BytePosition);
-                        Console.WriteLine("Current skin: " + Skin.ToString());
+                        Console.WriteLine("현재 스킨 : " + Skin.ToString());
 
-                        Console.WriteLine("Please wait...");
+                        Console.WriteLine("기다려주세요...");
                         ToggleSkinType();
 
                         GetSkinType(BytePosition);
-                        Console.WriteLine("Current skin: " + Skin.ToString());
+                        Console.WriteLine("현재 스킨: " + Skin.ToString());
                     }
                     else
                     {
